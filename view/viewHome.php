@@ -1,5 +1,5 @@
         <main class="flex-grow-1" style="background-color: #dddddd;">
-            <h2 class="display-5 text-center text-warning mb-3">Nouveautés</h2>
+            <h2 class="display-5 text-center mb-3">Nouveautés</h2>
             <div class="container d-flex flex-row">
                 <ul class="w-100 d-flex flex-row justify-content-between column-gap-3">
                     <li class="container list-unstyled border border-primary rounded pt-2 pb-4">
@@ -34,7 +34,7 @@
                     </li>
                 </ul>
             </div>
-            <h2 class="display-5 text-center text-warning mb-3">Meilleures ventes</h2>
+            <h2 class="display-5 text-center mb-3">Meilleures ventes</h2>
             <div class="container d-flex flex-row">
                 <ul class="w-100 d-flex flex-row justify-content-between column-gap-3">
                     <li class="container list-unstyled border border-primary rounded pt-2 pb-4">

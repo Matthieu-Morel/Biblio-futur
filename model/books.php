@@ -1,24 +1,5 @@
 <?php
-function connectBDD()
-{
-    $host = "127.0.0.1";
-    $dbname = "bdd_biblio_futur";
-    $user = "root";
-    $password = "";
-
-    try {
-        $options =
-            [
-                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-            ];
-        $connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $password, $options);
-        return $connection;
-    } catch (PDOException $e) {
-        print "Erreur de connexion PDO ";
-        die();
-    }
-}
+include "database.php";
 
 function getBooks() : array
 {
@@ -33,14 +14,20 @@ function getBooks() : array
     return $data;
 }
 
-function getBookByTitle($research) : array
+function getBooksBySearch($research) : array
 {
     $connection = connectBDD();
+    $research = htmlspecialchars($research);
+    $research = "%$research%";
 
     $query = $connection->prepare("SELECT * FROM BOOK 
-                                   WHERE BOOK.title_book LIKE '%:research%'
                                    JOIN AUTHOR ON BOOK.id_author = AUTHOR.id_author
-                                   JOIN CATEGORY ON BOOK.id_category = CATEGORY.id_category");
+                                   JOIN CATEGORY ON BOOK.id_category = CATEGORY.id_category
+                                   WHERE BOOK.title_book LIKE :research
+                                      OR BOOK.description_book LIKE :research
+                                      OR AUTHOR.name_author LIKE :research
+                                      OR AUTHOR.last_name_author LIKE :research
+                                      OR CATEGORY.title_category LIKE :research");
     $query->bindValue(":research", $research, PDO::PARAM_STR);
     $query->execute();
 
