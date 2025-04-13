@@ -27,3 +27,10 @@
                 </ul>
             </nav>
         </header>
+            <?php if(isset($_SESSION["alert"])) { ?>
+                <div class="alert alert-<?= $_SESSION["alert"]["type"] ?> alert-dismissible position-absolute top-0 start-50 translate-middle-x mt-5 fade show" role="alert">
+                    <p class="m-0"><?= $_SESSION["alert"]["message"] ?></p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php unset($_SESSION["alert"]);
+            } ?>

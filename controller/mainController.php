@@ -6,6 +6,8 @@ function mainController(string $page): string{
         "catalogue" => "catalog.php",
         "commande" => "order.php",
         "profil" => "profile.php",
+        "connexion" => "profileConnection.php",
+        "inscription" => "profileRegistration.php",
         "details" => "bookDetails.php"
     );
 
