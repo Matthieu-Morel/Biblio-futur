@@ -8,7 +8,8 @@ function mainController(string $page): string{
         "profil" => "profile.php",
         "connexion" => "profileConnection.php",
         "inscription" => "profileRegistration.php",
-        "details" => "bookDetails.php"
+        "details" => "bookDetails.php",
+        "anciennes_commandes" => "oldOrders.php",
     );
 
     if(array_key_exists($page, $controllers)){

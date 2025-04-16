@@ -1,5 +1,5 @@
 <?php
-include "database.php";
+include_once "database.php";
 
 function getBooks() : array
 {
@@ -62,5 +62,17 @@ function getBooksSortedByPrice() : array
 
     $data = $query->fetchAll(PDO::FETCH_ASSOC);
     return $data;
+}
+
+function updateBookStockQuantity($id_book, $quantity) : void
+{
+    $connection = connectBDD();
+
+    $query = $connection->prepare("UPDATE BOOK 
+                                    SET stock_quantity = stock_quantity - :quantity 
+                                    WHERE id_book = :id_book");
+    $query->bindValue(":quantity", $quantity, PDO::PARAM_INT);
+    $query->bindValue(":id_book", $id_book, PDO::PARAM_INT);
+    $query->execute();
 }
 ?>

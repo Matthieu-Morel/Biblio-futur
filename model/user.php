@@ -1,5 +1,5 @@
 <?php
-include "database.php";
+include_once "database.php";
 
 function registerUser($firstName, $lastName, $login, $password) {
     $connection = connectBDD();
