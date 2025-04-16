@@ -75,4 +75,38 @@ function updateBookStockQuantity($id_book, $quantity) : void
     $query->bindValue(":id_book", $id_book, PDO::PARAM_INT);
     $query->execute();
 }
+
+function getLatestBooks() : array
+{
+    $connection = connectBDD();
+
+    $query = $connection->prepare("SELECT * FROM BOOK 
+                                   JOIN AUTHOR ON BOOK.id_author = AUTHOR.id_author
+                                   JOIN CATEGORY ON BOOK.id_category = CATEGORY.id_category
+                                   ORDER BY BOOK.date_added_book DESC 
+                                   LIMIT 3");
+    $query->execute();
+
+    $data = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $data;
+}
+
+function getBestSellers() : array
+{
+    $connection = connectBDD();
+
+    $query = $connection->prepare("SELECT BOOK.*, AUTHOR.*, CATEGORY.* FROM BOOK 
+                                   JOIN AUTHOR ON BOOK.id_author = AUTHOR.id_author
+                                   JOIN CATEGORY ON BOOK.id_category = CATEGORY.id_category
+                                   JOIN ORDERS_LINE ON BOOK.id_book = ORDERS_LINE.id_book
+                                   JOIN ORDERS ON ORDERS_LINE.id_orders = ORDERS.id_orders
+                                   WHERE ORDERS.confirmed_orders = TRUE
+                                   GROUP BY BOOK.id_book
+                                   ORDER BY SUM(ORDERS_LINE.quantity_ordered) DESC
+                                   LIMIT 3");
+    $query->execute();
+
+    $books = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $books;
+}
 ?>

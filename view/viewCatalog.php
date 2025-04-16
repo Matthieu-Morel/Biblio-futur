@@ -11,7 +11,7 @@
             </div>
             <div class="container d-flex flex-row">
                 <ul class="w-100 d-flex flex-row justify-content-between flex-wrap row-gap-4">
-                    <?php foreach ($books as $idBook => $book) {?>
+                    <?php foreach ($books as $book) {?>
                         <li class="container list-unstyled col-12 col-md-6 col-lg-4 m-0">
                             <div class="container d-flex flex-column border border-primary rounded pt-2 pb-3">
                                 <div class="d-flex flex-row column-gap-3">
