@@ -1,5 +1,5 @@
 <?php
-include "$filePath/model/user.php";
+include_once "$filePath/model/user.php";
 
 if (isLogged()) {
     include "$filePath/controller/profile.php";

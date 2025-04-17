@@ -50,20 +50,6 @@ function getBookDetailsById($id) : array
     return $data;
 }
 
-function getBooksSortedByPrice() : array
-{
-    $connection = connectBDD();
-
-    $query = $connection->prepare("SELECT * FROM BOOK 
-                                   JOIN AUTHOR ON BOOK.id_author = AUTHOR.id_author
-                                   JOIN CATEGORY ON BOOK.id_category = CATEGORY.id_category
-                                   ORDER BY price_book");
-    $query->execute();
-
-    $data = $query->fetchAll(PDO::FETCH_ASSOC);
-    return $data;
-}
-
 function updateBookStockQuantity($id_book, $quantity) : void
 {
     $connection = connectBDD();
@@ -104,6 +90,22 @@ function getBestSellers() : array
                                    GROUP BY BOOK.id_book
                                    ORDER BY SUM(ORDERS_LINE.quantity_ordered) DESC
                                    LIMIT 3");
+    $query->execute();
+
+    $books = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $books;
+}
+
+function getFavoritesBooks($id_user) : array
+{
+    $connection = connectBDD();
+
+    $query = $connection->prepare("SELECT BOOK.*, AUTHOR.*, CATEGORY.* FROM BOOK 
+                                   JOIN AUTHOR ON BOOK.id_author = AUTHOR.id_author
+                                   JOIN CATEGORY ON BOOK.id_category = CATEGORY.id_category
+                                   JOIN TO_LIKE ON BOOK.id_book = TO_LIKE.id_book
+                                   WHERE TO_LIKE.id_users = :id_users");
+    $query->bindValue(":id_users", $id_user, PDO::PARAM_INT);
     $query->execute();
 
     $books = $query->fetchAll(PDO::FETCH_ASSOC);

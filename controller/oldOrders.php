@@ -1,6 +1,6 @@
 <?php 
-include "$filePath/model/order.php";
-include "$filePath/model/user.php";
+include_once "$filePath/model/order.php";
+include_once "$filePath/model/user.php";
 
 if (isLogged()) {
     $oldOrders = getOldOrders($_SESSION["id_users"]);

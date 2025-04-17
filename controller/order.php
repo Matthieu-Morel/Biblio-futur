@@ -1,7 +1,7 @@
 <?php
-include "$filePath/model/order.php";
-include "$filePath/model/user.php";
-include "$filePath/model/books.php";
+include_once "$filePath/model/order.php";
+include_once "$filePath/model/user.php";
+include_once "$filePath/model/books.php";
 
 if(isLogged()){
     if(isset($_GET['action'])){

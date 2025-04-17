@@ -1,5 +1,5 @@
 <?php
-include "$filePath/model/books.php";
+include_once "$filePath/model/books.php";
 
 $id = $_GET["id"];
 
