@@ -10,6 +10,7 @@ function mainController(string $page): string{
         "inscription" => "profileRegistration.php",
         "details" => "bookDetails.php",
         "anciennes_commandes" => "oldOrders.php",
+        "admin" => "admin.php",
     );
 
     if(array_key_exists($page, $controllers)){

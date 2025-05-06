@@ -111,4 +111,68 @@ function getFavoritesBooks($id_user) : array
     $books = $query->fetchAll(PDO::FETCH_ASSOC);
     return $books;
 }
+
+function addBook($title, $description, $price, $picture, $stockQuantity, $releaseDate, 
+                 $dateAdded, $idAuthor, $idCategory, $idPublisher){
+    $connection = connectBDD();
+
+    $title = htmlspecialchars($title);
+    $description = htmlspecialchars($description);
+
+    $query = $connection->prepare("INSERT INTO BOOK (title_book, description_book, price_book, picture_book, stock_quantity, 
+                                    release_date_book, date_added_book, id_author, id_category, id_publisher) 
+                                    VALUES (:title_book, :description_book, :price_book, :picture_book, :stock_quantity, 
+                                    :release_date_book, :date_added_book, :id_author, :id_category, :id_publisher)");
+    $query->bindValue(":title_book", $title, PDO::PARAM_STR);
+    $query->bindValue(":description_book", $description, PDO::PARAM_STR);
+    $query->bindValue(":price_book", $price, PDO::PARAM_STR);
+    $query->bindValue(":picture_book", $picture, PDO::PARAM_STR);
+    $query->bindValue(":stock_quantity", $stockQuantity, PDO::PARAM_INT);
+    $query->bindValue(":release_date_book", $releaseDate, PDO::PARAM_STR);
+    $query->bindValue(":date_added_book", $dateAdded, PDO::PARAM_STR);
+    $query->bindValue(":id_author", $idAuthor, PDO::PARAM_INT);
+    $query->bindValue(":id_category", $idCategory, PDO::PARAM_INT);
+    $query->bindValue(":id_publisher", $idPublisher, PDO::PARAM_INT);
+    $query->execute();
+}
+
+function updateBook($idBook, $title, $description, $price, $picture, $stockQuantity, 
+                    $releaseDate, $idAuthor, $idCategory, $idPublisher){
+    $connection = connectBDD();
+
+    $title = htmlspecialchars($title);
+    $description = htmlspecialchars($description);
+
+    $query = $connection->prepare("UPDATE BOOK 
+                                    SET title_book = :title_book, 
+                                        description_book = :description_book, 
+                                        price_book = :price_book, 
+                                        picture_book = :picture_book, 
+                                        stock_quantity = :stock_quantity, 
+                                        release_date_book = :release_date_book, 
+                                        id_author = :id_author, 
+                                        id_category = :id_category, 
+                                        id_publisher = :id_publisher
+                                    WHERE id_book = :id_book");
+    $query->bindValue(":id_book", $idBook, PDO::PARAM_INT);
+    $query->bindValue(":title_book", $title, PDO::PARAM_STR);
+    $query->bindValue(":description_book", $description, PDO::PARAM_STR);
+    $query->bindValue(":price_book", $price, PDO::PARAM_STR);
+    $query->bindValue(":picture_book", $picture, PDO::PARAM_STR);
+    $query->bindValue(":stock_quantity", $stockQuantity, PDO::PARAM_INT);
+    $query->bindValue(":release_date_book", $releaseDate, PDO::PARAM_STR);
+    $query->bindValue(":id_author", $idAuthor, PDO::PARAM_INT);
+    $query->bindValue(":id_category", $idCategory, PDO::PARAM_INT);
+    $query->bindValue(":id_publisher", $idPublisher, PDO::PARAM_INT);
+    $query->execute();
+}
+
+function removeBook($idBook){
+    $connection = connectBDD();
+
+    $query = $connection->prepare("DELETE FROM BOOK
+                                    WHERE id_book = :id_book");
+    $query->bindValue(":id_book", $idBook, PDO::PARAM_INT);
+    $query->execute();
+}
 ?>

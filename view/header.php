@@ -1,3 +1,8 @@
+<?php if(!isset($_SESSION)){
+    session_start();
+} 
+include_once "$filePath/model/user.php";
+?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -12,6 +17,13 @@
             <img class="img-fluid col-2" src="./img/logoBiblioFutur.png" alt="Logo de Biblio Futur">
             <nav>
                 <ul class="nav">
+                    <?php if(isLogged()){ ?>
+                        <?php if($_SESSION["role_users"] == "admin"){ ?>
+                            <li class="nav-item">
+                                <a class="nav-link fs-5 text-warning" href="./?page=admin">Administration</a>
+                            </li>
+                        <?php } ?>
+                    <?php } ?>
                     <li class="nav-item">
                         <a class="nav-link fs-5 text-warning" href="./?page=accueil">Nouveautés</a>
                     </li>
