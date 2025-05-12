@@ -11,6 +11,8 @@ function mainController(string $page): string{
         "details" => "bookDetails.php",
         "anciennes_commandes" => "oldOrders.php",
         "admin" => "admin.php",
+        "cgv" => "generalSaleConditions.php",
+        "politique_confidentialite" => "privacyPolicy.php",
     );
 
     if(array_key_exists($page, $controllers)){
