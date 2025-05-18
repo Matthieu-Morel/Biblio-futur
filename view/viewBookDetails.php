@@ -1,9 +1,9 @@
         <main class="flex-grow-1" style="background-color: #dddddd;">
             <h1 class="display-5 text-center mb-3">Détails du livre</h1>
-            <div class="container border border-primary rounded p-3 mb-3 d-flex flex-column row-gap-3">
-                <div class="d-flex flex-row column-gap-3">
-                    <div class="d-flex flex-column w-25">
-                        <img style="min-height: 300px; max-height: 600px;" src="./img/books/<?= $book["picture_book"] ?>" alt="image du livre">
+            <div class="container border border-primary rounded p-3 mb-3 d-flex flex-column row-gap-3 col-10">
+                <div class="d-flex flex-column flex-md-row column-gap-3">
+                    <div class="d-flex flex-column">
+                        <img class="col-6 col-md-auto align-self-center mb-2" style="min-height: 300px; max-height: 600px;" src="./img/books/<?= $book["picture_book"] ?>" alt="image du livre">
                     </div>
                     <div class="d-flex flex-column">
                         <h3 class="fs-5 text-center">

@@ -1,8 +1,8 @@
         <main class="flex-grow-1" style="background-color: #dddddd;">
             <h1 class="display-5 text-center mb-3">Notre catalogue</h1>
-            <div class="container w-50 d-flex flex-row column-gap-3 mb-3">
+            <div class="container w-50 d-flex flex-column-reverse flex-lg-row column-gap-3 row-gap-3 mb-3">
                 <?php if(isLogged()){ ?>
-                    <form action="" method="post">
+                    <form class="d-flex justify-content-center" action="" method="post">
                         <input type="submit" class="btn btn-secondary" value="<?= $sort?>" name="tri">
                     </form>
                 <?php } ?>
@@ -12,7 +12,7 @@
                 </form>
             </div>
             <div class="container d-flex flex-row">
-                <ul class="w-100 d-flex flex-row justify-content-between flex-wrap row-gap-4">
+                <ul class="w-100 d-flex flex-row justify-content-between flex-wrap row-gap-4 ps-0">
                     <?php foreach ($books as $book) {?>
                         <li class="container list-unstyled col-12 col-md-6 col-lg-4 m-0">
                             <div class="container d-flex flex-column border border-primary rounded pt-2 pb-3">

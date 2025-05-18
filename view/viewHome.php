@@ -1,7 +1,7 @@
         <main class="flex-grow-1" style="background-color: #dddddd;">
-            <h2 class="display-5 text-center mb-3">Nouveautés</h2>
-            <div class="container d-flex flex-row ps-0">
-                <ul class="w-100 d-flex flex-row justify-content-between column-gap-3 ps-0">
+            <h2 class="display-5 text-center mb-4">Nouveautés</h2>
+            <div class="container d-flex flex-row px-4">
+                <ul class="w-100 d-flex flex-row flex-wrap flex-lg-nowrap justify-content-center justify-content-lg-between gap-3 ps-0">
                     <?php foreach($latestBooks as $book){ ?>
                         <li class="container list-unstyled col-12 col-md-6 col-lg-4 m-0 px-0">
                             <div class="container d-flex flex-column border border-primary rounded pt-2 pb-3">
@@ -24,9 +24,9 @@
                 </ul>
             </div>
 
-            <h2 class="display-5 text-center mb-3">Meilleures ventes</h2>
-            <div class="container d-flex flex-row ps-0">
-                <ul class="w-100 d-flex flex-row justify-content-between column-gap-3 ps-0">
+            <h2 class="display-5 text-center mb-4">Meilleures ventes</h2>
+            <div class="container d-flex flex-row px-4">
+                <ul class="w-100 d-flex flex-row flex-wrap flex-lg-nowrap justify-content-center justify-content-lg-between gap-3 ps-0">
                     <?php foreach($bestSellers as $book){ ?>
                         <li class="container list-unstyled col-12 col-md-6 col-lg-4 m-0 px-0">
                             <div class="container d-flex flex-column border border-primary rounded pt-2 pb-3">

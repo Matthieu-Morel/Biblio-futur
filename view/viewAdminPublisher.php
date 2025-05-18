@@ -3,16 +3,16 @@
             <h2 class="fs-4 text-center mb-4">Panneau de gestion</h2>
             <div class="container w-75">
                 <ul class="list-unstyled d-flex flex-row justify-content-around flex-wrap row-gap-2 border border-dark rounded py-3 px-2">
-                    <li class="list-unstyled">
+                    <li class="list-unstyled col-12 col-md-6 col-lg-3 px-2 d-flex justify-content-center">
                         <a href="./?page=admin&page_admin=livres" class="btn btn-primary">Gestion des livres</a>
                     </li>
-                    <li class="list-unstyled">
+                    <li class="list-unstyled col-12 col-md-6 col-lg-3 px-2 d-flex justify-content-center">
                         <a href="./?page=admin&page_admin=auteurs" class="btn btn-primary">Gestion des auteurs</a>
                     </li>
-                    <li class="list-unstyled">
+                    <li class="list-unstyled col-12 col-md-6 col-lg-3 px-2 d-flex justify-content-center">
                         <a href="./?page=admin&page_admin=categories" class="btn btn-primary">Gestion des catégories</a>
                     </li>
-                    <li class="list-unstyled">
+                    <li class="list-unstyled col-12 col-md-6 col-lg-3 px-2 d-flex justify-content-center">
                         <a href="./?page=admin&page_admin=editeurs" class="btn btn-primary">Gestion des éditeurs</a>
                     </li>
                 </ul>
@@ -21,9 +21,9 @@
             <h2 class="fs-4 text-center mb-4">Gestion des éditeurs</h2>
             <div class="container d-flex flex-column row-gap-2 w-50">
                 <?php foreach($publishers as $publisher){ ?>
-                    <div class="container d-flex flex-row justify-content-between border border-primary rounded mb-3 p-3 column-gap-3">
-                        <h3 class="fs-5 text-center mb-0 d-flex align-items-center"><?= $publisher["label_publisher"]  ?></h3>
-                        <div class="d-flex flex-row align-items-center column-gap-3">
+                    <div class="container d-flex flex-column flex-md-row justify-content-between border border-primary rounded mb-3 p-3 column-gap-3 row-gap-3">
+                        <h3 class="fs-5 text-center mb-0 d-flex align-items-center align-self-center"><?= $publisher["label_publisher"]  ?></h3>
+                        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-center column-gap-3 row-gap-3">
                             <button class="btn btn-primary" style="height: fit-content;" type="button" data-bs-toggle="modal" data-bs-target="#updatePublisherModal<?= $publisher["id_publisher"] ?>">Modifier</button>
                             <button class="btn btn-danger" style="height: fit-content;" type="button" data-bs-toggle="modal" data-bs-target="#removePublisherModal<?= $publisher["id_publisher"] ?>">Supprimer</button>
                         </div>

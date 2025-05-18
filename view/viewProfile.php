@@ -1,32 +1,32 @@
         <main class="flex-grow-1" style="background-color: #dddddd;">
             <h1 class="display-5 text-center mb-3">Votre profil</h1>
-            <div class="container w-50 p-3 py-5 mb-4 border border-secondary rounded">
+            <div style="max-width: 900px;" class="container w-75 p-3 py-5 mb-4 border border-secondary rounded">
                 
-                <div class="mb-4 d-flex flex-row w-100">
-                    <p class="col-8 ps-5 mb-0 d-flex align-items-center">Prénom : <?= htmlspecialchars($user["name"]) ?></p>
-                    <div class="col-4 d-flex flex-row justify-content-center">
+                <div class="mb-5 mb-md-4 d-flex flex-column flex-md-row w-100 row-gap-3">
+                    <p class="col-md-8 ps-md-5 mb-0 d-flex align-items-center align-self-center">Prénom : <?= htmlspecialchars($user["name"]) ?></p>
+                    <div class="col-md-4 d-flex flex-row justify-content-center align-self-center">
                         <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#nameModal">Modifier</button>
                     </div>
                 </div>
 
-                <div class="mb-4 d-flex flex-row w-100">
-                    <p class="col-8 ps-5 mb-0 d-flex align-items-center">Nom : <?= htmlspecialchars($user["last_name"]) ?></p>
-                    <div class="col-4 d-flex flex-row justify-content-center">
+                <div class="mb-5 mb-md-4 d-flex flex-column flex-md-row w-100 row-gap-3">
+                    <p class="col-md-8 ps-md-5 mb-0 d-flex align-items-center align-self-center">Nom : <?= htmlspecialchars($user["last_name"]) ?></p>
+                    <div class="col-md-4 d-flex flex-row justify-content-center align-self-center">
                         <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#lastNameModal">Modifier</button>
                     </div>
                 </div>
 
-                <div class="mb-4 d-flex flex-row w-100">
-                    <p class="col-8 ps-5 mb-0 d-flex align-items-center">Adresse mail : <?= htmlspecialchars($user["login"]) ?></p>
-                    <div class="col-4 d-flex flex-row justify-content-center">
+                <div class="mb-5 mb-md-4 d-flex flex-column flex-md-row w-100 row-gap-3">
+                    <p class="col-md-8 ps-md-5 mb-0 d-flex align-items-center align-self-center">Adresse mail : <?= htmlspecialchars($user["login"]) ?></p>
+                    <div class="col-md-4 d-flex flex-row justify-content-center align-self-center">
                         <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">Modifier</button>
                     </div>
                 </div>
 
                 <div class="mb-4 d-flex flex-column w-100">
-                    <div class="mb-4 d-flex flex-row w-100">
-                        <p class="col-8 ps-5 mb-0 d-flex align-items-center">Adresse<?php if($nbAddresses > 1){echo "s";} ?> : <?php if($nbAddresses == 0){echo "Vous n'avez pas défini d'adresse.";} ?></p>
-                        <div class="col-4 d-flex flex-row justify-content-center">
+                    <div class="mb-0 mb-md-4 d-flex flex-column flex-md-row w-100">
+                        <p class="col-md-8 ps-md-5 mb-0 d-flex align-items-center align-self-center">Adresse<?php if($nbAddresses > 1){echo "s";} ?> : <?php if($nbAddresses == 0){echo "Vous n'avez pas défini d'adresse.";} ?></p>
+                        <div class="d-none d-md-flex col-md-4 d-flex flex-row justify-content-center">
                             <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#addAddressModal">Ajouter une adresse</button>
                         </div>
                     </div>
@@ -35,13 +35,13 @@
                         <table class="d-flex flex-row table px-5 w-100">
                             <tbody class="w-100">
                                 <?php foreach($user["addresses"] as $address) { ?>
-                                    <tr class="d-flex flex-row w-100">
-                                        <td class="col-7 fs-6 bg-transparent d-flex align-items-center"><?php echo htmlspecialchars($address["street_nb_address"])." ".
+                                    <tr class="d-flex flex-column flex-md-row w-100 mt-4">
+                                        <td class="col-md-7 fs-6 bg-transparent d-flex align-items-center justify-content-center"><?php echo htmlspecialchars($address["street_nb_address"])." ".
                                                                     htmlspecialchars($address["street_address"]).", ".
                                                                     htmlspecialchars($address["postal_code_address"])." ".
                                                                     htmlspecialchars($address["city_address"])." ".
                                                                     htmlspecialchars($address["country_address"]);?></td>
-                                        <td class="col-5 d-flex flex-row column-gap-2 justify-content-around bg-transparent">
+                                        <td class="col-md-5 d-flex flex-row column-gap-2 justify-content-center justify-content-md-around bg-transparent">
                                             <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#updateAddressModal<?= $address["id_address"] ?>">Modifier</button>
                                             <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteAddressModal<?= $address["id_address"] ?>">Supprimer</button>
                                         </td>
@@ -50,6 +50,10 @@
                             </tbody>
                         </table>
                     <?php } ?>
+
+                    <div class="d-flex d-md-none flex-row justify-content-center mt-3">
+                        <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#addAddressModal">Ajouter une adresse</button>
+                    </div>
                 </div>
 
                 <div class="d-flex flex-row w-100 justify-content-center col-12">

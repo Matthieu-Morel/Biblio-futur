@@ -4,7 +4,7 @@
 
                 <div class="container d-flex flex-column row-gap-4 mb-3">
                     <?php foreach($order as $orderLine){ ?>
-                        <div class="d-flex flex-row container w-50 border border-primary rounded p-3">
+                        <div class="d-flex flex-row container-md border border-primary rounded p-3" style="max-width: 800px;">
                             <div class="col-3 d-flex justify-content-center">
                                 <img style="height: 120px;" src="./img/books/<?= $orderLine["picture_book"] ?>" alt="image du livre">
                             </div>
@@ -21,8 +21,8 @@
                             </div>
                         </div>
                     <?php } ?>
-                    <div class="d-flex flex-row container mb-3 w-50 justify-content-evenly">
-                        <p>Prix total : <?= $totalPrice ?>&euro;</p>
+                    <div class="d-flex flex-row container mb-3 w-auto justify-content-evenly column-gap-3">
+                        <p class="mb-0">Prix total : <?= $totalPrice ?>&euro;</p>
                         <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#confirmOrderModal">Valider la commande</button>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                 </div>
             <?php } ?>
 
-            <div class="container d-flex flex-row justify-content-center mt-4">
+            <div class="container d-flex flex-row justify-content-center mt-4 mb-3">
                 <a class="btn btn-info" href="./?page=anciennes_commandes">Consulter vos anciennes commandes</a>
             </div>
         </main>
